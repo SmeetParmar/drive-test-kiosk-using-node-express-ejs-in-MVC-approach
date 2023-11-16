@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('layouts/head'); -%>
+    <body>
+        <!-- Navigation-->
+        <%- include('layouts/nav'); -%>
+        <!-- Page Header-->
+        <header class="masthead">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="page-heading">
+                            <h1>Register</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <main class="mb-4">
+            <div class="container px-4 px-lg-5 ">
+                <div class="row justify-content-center ">
+                    <div class="col-md-6 border border-dark border-3 px-4">
+                        <p class="text-primary fs-1">Register</p>
+                        <div class="my-5">
+                            <form id="contactForm" action="/post/register" method="post">
+                                <div class="form-floating">
+                                    <input class="form-control" id="userName" name="userName" type="text" placeholder="Enter your username..." />
+                                    <span id="error_message"></span>
+                                    <label for="name">Username</label>
+                                </div>
+
+                                <div class="form-floating">
+                                    <input class="form-control" id="password" name="password" type="password" placeholder="Enter your password..." />
+                                    <span id="error_message"></span>
+                                    <label for="email">Password</label>
+                                </div>
+
+                                <div class="form-floating">
+                                  <input class="form-control" id="conformPassword" name="conformPassword" type="password" placeholder="Enter your Conform Password..."  />
+                                  <span id="error_message"></span>
+                                  <label for="email">Conform Password</label>
+                                </div>
+
+                                <div class="form-group mt-4">
+                                  
+                                  <label for="userType">User Type</label>
+                                  <select class="form-control" id="userType" name="userType">
+                                    <option disabled selected>Please select a value</option>
+                                    <option>Driver</option>
+                                    <option>Examiner</option>
+                                    <option>Admin</option>
+                                  </select>
+                                  <span id="error_message"></span>
+                                </div>
+                                
+                                <br />
+                                <!-- Submit Button-->
+                                <button class="btn btn-primary text-uppercase" id="registerButton" type="submit">Register</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- Footer-->
+        <%- include('layouts/footer'); -%>
+        <!-- Bootstrap core JS-->
+        <%- include('layouts/script'); -%>
+    </body>
+</html>
+
+
+<!-- <a class="btn fs-5 btn-outline-primary me-2 justify-content-start flex" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true" aria-controls="collapseExample">
+    Customize
+  </a>        
+     <div class="collapse" id="collapseExample">
+     <a class="btn btn-outline-info fs-5 me-2 flex" data-bs-toggle="collapse" href="#<?php echo $data['btn1']; ?>" role="button" aria-expanded="true" aria-controls="collapseExample"><?php echo $data['btn1']; ?></a>
+     <a class="btn btn-outline-warning fs-5 me-2 flex" data-bs-toggle="collapse" href="#<?php echo $data['btn2']; ?>" role="button" aria-expanded="true" aria-controls="collapseExample"><?php echo $data['btn2']; ?></a>  -->
+
+     <!-- <div class="accordion row" id="accordionExample">
+
+        <div class="accordion-item">
+
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Accordion Item #1
+            </button>
+          </h2>
+
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+
+            <div class="accordion-body">
+              <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+
+          </div>
+
+        </div>
+        
+        
+      </div> -->

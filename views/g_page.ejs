@@ -1,0 +1,86 @@
+    <!DOCTYPE html>
+    <html lang="en">
+        <%- include('layouts/head'); -%>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <body>
+            <!-- Navigation-->
+            <%- include('layouts/nav'); -%>
+            <!-- Page Header-->
+            <header class="masthead">
+                <div class="container position-relative px-4 px-lg-5">
+                    <div class="row gx-4 gx-lg-5 justify-content-center">
+                        <div class="col-md-10 col-lg-8 col-xl-7">
+                            <div class="page-heading">
+                                <h1>G Page</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- Main Content-->
+            <main class="mb-4">
+                <div class="container px-4 px-lg-5">
+                    <div class="row gx-4 gx-lg-5 justify-content-center">
+                        <div class="col-md-10 col-lg-8 col-xl-7">
+                            <div class="my-5"></div>
+                                <br><Br>
+                                    <form id="contactForm" data-sb-form-api-token="API_TOKEN" action="/post/update" method="post">
+                                        <div class="form-floating">
+                                            <input class="form-control" value="<%= userInfo.firstName %>" id="firstName" name="firstName" type="text" placeholder="Enter your First Name..." data-sb-validations="required" disabled />
+                                            <label for="name">First Name</label>
+                                        </div>
+                                        <div class="form-floating">
+                                            <input class="form-control" value="<%= userInfo.lastName %>" id="lastName" name="lastName" type="text" placeholder="Enter your Last Name..." data-sb-validations="required" disabled />
+                                            <label for="name">Last Name</label>
+                                        </div>
+                                        <div class="form-floating">
+                                            <input class="form-control" value="<%= userInfo.licenseNo %>" id="licenseNo" name="licenseNo" type="text" placeholder="Enter your License Number..." data-sb-validations="required" disabled />
+                                            <label for="name">License Number [Must be 8 characters alphanumeric]</label>
+                                        </div>
+                                        <div class="form-floating">
+                                            <input class="form-control" value="<%= userInfo.age %>" id="age" name="age" type="number" placeholder="Enter your Age..." data-sb-validations="required" disabled />
+                                            <label for="phone">Age</label>
+                                        </div>
+                                        <div class="form-floating">
+
+                                            <input class="form-control" value=" <%= userInfo.dob.toISOString().slice(0, -14).trimLeft()%>" id="dob" name="dob" type="text" placeholder="Enter your Date Of Birth..." data-sb-validations="required" disabled />
+                                            <label for="phone">Date Of Birth</label>
+                                        </div>
+                                        <br />
+                                        <p class="fs-1 text-success">Car Information</p>
+                                        <div class="form-floating">
+                                            <input class="form-control" value="<%= userInfo.car_details.make %>" id="car_details_make" name="car_details[make]" type="text" placeholder="Enter your Company Name..." data-sb-validations="required" />
+                                            <span id="error_message"></span>
+                                            <label for="phone">Car Make (Company)</label>
+                                        </div>
+                                        <div class="form-floating">
+                                            <input class="form-control" value="<%= userInfo.car_details.model %>" id="car_details_model" name="car_details[model]" type="text" placeholder="Enter your Car Model..." data-sb-validations="required" />
+                                            <span id="error_message"></span>
+                                            <label for="phone">Car Model</label>
+                                        </div>
+                                        <div class="form-floating">
+                                            <input class="form-control" value="<%= userInfo.car_details.year %>" id="car_details_year" name="car_details[year]" type="text" placeholder="Enter the Year Of Purchase..." data-sb-validations="required" />
+                                            <span id="error_message"></span>
+                                            <label for="phone">Year Of Purchase</label>
+                                        </div>
+                                        <div class="form-floating">
+                                            <input class="form-control" value="<%= userInfo.car_details.plateNo %>" id="car_details_plateNo" name="car_details[plateNo]" type="text" placeholder="Enter your Number Plate..." data-sb-validations="required" />
+                                            <span id="error_message"></span>
+                                            <label for="phone">Plate Number</label>
+                                        </div>
+                                        <br>
+                                        <button class="btn btn-primary text-uppercase" id="updateButton" type="submit">Update</button>
+                                    </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <!-- Footer-->
+            <%- include('layouts/footer'); -%>
+            
+        
+            <!-- Bootstrap core JS-->
+            <%- include('layouts/script'); -%>
+        </body>
+    </html>
