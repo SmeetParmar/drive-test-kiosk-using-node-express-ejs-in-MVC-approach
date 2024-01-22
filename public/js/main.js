@@ -320,4 +320,35 @@ $(document).ready( () => {
 
 		if(!formSubmit) { e.preventDefault(); }
 	});
+
+	$("#addSlot").click(function(e){
+		
+		let formSubmit=true;
+
+		let date = $("#date").val().trim();
+		let time=$("#time").val();
+
+		
+        if(!date)
+		{
+			$("#date").next().text("Please Enter date.");
+			formSubmit=false;
+		}
+		else
+		{	
+			$("#date").next().text("");
+		}
+
+		if(!time)
+		{
+			$("#time").next().text("Please Enter time.");
+			formSubmit=false;
+		}
+		else
+		{	
+			$("#time").next().text("");
+		}
+
+		if(!formSubmit) { e.preventDefault(); }
+	});
 }); // end

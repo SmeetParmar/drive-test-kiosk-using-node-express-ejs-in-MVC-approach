@@ -12,6 +12,22 @@ const driveTestSchema = new Schema({
         required:true,
         default:"Default"
     },
+    appointmentId:{
+        type:String,
+        default:"Default"
+    },
+    testType:{
+        type:String,
+        default:"Default"
+    },
+    comment:{
+        type:String,
+        default:"Default"
+    },
+    result:{
+        type:String,
+        default:"Default"
+    },
     licenseNo:{
         type:String,
         required:true,

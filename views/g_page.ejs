@@ -71,6 +71,58 @@
                                         <br>
                                         <button class="btn btn-primary text-uppercase" id="updateButton" type="submit">Update</button>
                                     </form>
+
+                                    <% if(appointmentDetails == null) {%>
+                                    <p class="fs-1 text-success">Book Appointment for G</p>
+                                    <% if(date==null) { %>
+                                        <form id="contactForm" action="/appointment/checkDateG" method="post">
+                                            <div class="form-floating">
+                                                Date :
+                                                <input id="date" name="date" type="date" />
+                                                <span id="error_message"></span>
+                                            </div>
+                                            <br>
+                                            <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Check slots</button>
+                                        </form>
+                                        <% } else { %>
+                                            <form id="contactForm" action="/appointment/bookGAppointment" method="post">
+                                                <div class="form-floating">
+                                                    Date :
+                                                    <input id="date" name="date" type="text" value="<%= findDate %>" />
+                                                </div>
+                                                <br>
+                                                Time :
+                                                <select id="time" name="time">
+                                                    <option selected disabled> Select Time slot... </option>
+                                                    <% if(date.length==0){ %>
+                                                        <option>No time slot available for this date...</option>
+                                                        <% } else { %>
+                                                            <% date.forEach(function(eachDate) { if(eachDate.isTimeSlotAvailable) { %>
+                                                                <option value="<%= eachDate.time %>">
+                                                                    <%= eachDate.time %>
+                                                                </option>
+                                                                <% }}); %>
+                                                                    <%}%>
+                                                </select>
+                                                <br><br>
+                                                <input type="hidden" name="testType" id="testType" value="G">
+                                                <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Book Appointment</button>
+                                                <% } %>
+                                    
+                                            </form>
+                                            <%}
+                                            else
+                                            {%>
+                                                <% if(userInfo.comment == "Default" && userInfo.result == "Default") {%>
+                                                <br><br>
+                                                <p class="fs-1 text-success">Your appointment is booked for G on <%= appointmentDetails.date %> at <%= appointmentDetails.time %>.<br>All The Best!!!</p>
+                                                <% } else { %>
+                                                <p class="fs-1 text-success">Your exam for G was on <%= appointmentDetails.date %> at <%= appointmentDetails.time %>.<br>
+                                                And your result is : <%= userInfo.result %>.
+                                                <br>
+                                                Comment : <%= userInfo.comment %>.</p>
+                                                <% } %>
+                                            <%}%>
                             </div>
                         </div>
                     </div>

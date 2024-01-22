@@ -16,8 +16,16 @@ module.exports = async (req,res)=>{
                 // console.log(getData._id);
                 if (getData.userType == "Driver")
                 {
-                    req.session.userId = getData._id
+                    req.session.userId = getData._id;
                 }
+                else if(getData.userType == "Admin")
+                {
+                    req.session.adminId = getData._id;
+                } 
+                else
+                {
+                    req.session.examinerId = getData._id;
+                }  
                 notifier.notify({
                     title: 'Alert Notification',
                     message: 'Logged in successfully...',

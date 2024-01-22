@@ -14,14 +14,23 @@
                 <% if(isLoggedIn) { %>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/g2_page">G2_page</a></li>
                 <% } %>
-                <% if(!isLoggedIn) { %>
+                <% if(!isLoggedIn && !isAdminLoggedIn && !isExaminerLoggedIn) { %>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/register">Register</a></li>
                 <% } %>
-                <% if(!isLoggedIn) { %>
+                <% if(isExaminerLoggedIn) { %>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/examiner">Examiner</a></li>
+                <% } %>
+                <% if(isAdminLoggedIn) { %>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/appointment">Appointment</a></li>
+                <% } %>
+                <% if(isAdminLoggedIn) { %>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/candidates">Candidates</a></li>
+                <% } %>
+                <% if(!isLoggedIn && !isAdminLoggedIn && !isExaminerLoggedIn) { %>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/login">Login</a></li>
                 <% } %>
-                <% if(isLoggedIn) { %>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/logout">Logout</a></li>
+                <% if(isLoggedIn || isAdminLoggedIn || isExaminerLoggedIn) { %>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/logout">Logout</a></li>
                 <% } %>
             </ul>
         </div>

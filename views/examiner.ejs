@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('layouts/head'); -%>
+    <body>
+        <!-- Navigation-->
+        <%- include('layouts/nav'); -%>
+        <!-- Page Header-->
+        <header class="masthead">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="page-heading">
+                            <h1>Examiner</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <main class="mb-4">
+            <div class="container px-4 px-lg-5 ">
+                <div class="row justify-content-center ">
+                    <div class="col-md-6 border border-dark border-3 px-4">
+                        <p class="text-primary fs-1">Applicants</p>
+                        <div class="my-5">
+                            <form action="/form/filterData" method="post">
+                            <p>
+                                Filter Data : 
+                                <input type="submit" class="btn btn-primary text-uppercase p-2" id="submitButton" name="submitButton" value="G2"> 
+                                <input type="submit" class="btn btn-primary text-uppercase p-2" id="submitButton" name="submitButton" value="G"> 
+                            </p>
+                            </form>
+                            <% allData.forEach(function(eachData) { %>
+                                <div class="accordion" id="accordionExample">
+                                    <div class="accordion-item">
+                                      <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#<%= eachData.userDetails.firstName %>" aria-expanded="false" aria-controls="">
+                                            <%= eachData.userDetails.firstName %> <%= eachData.userDetails.lastName %>
+                                        </button>
+                                      </h2>
+                                      <div id="<%= eachData.userDetails.firstName %>" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                          Appointment ID : <b><%= eachData.userDetails.appointmentId %></b> <br>
+                                          Date : <b><%= eachData.dateTime.date %></b> <br>
+                                          Time : <b><%= eachData.dateTime.time %></b> <br>
+                                          Test Type : <b><%= eachData.userDetails.testType %></b> <br>
+                                          Make : <b><%= eachData.userDetails.car_details.make %></b> <br>
+                                          Model : <b><%= eachData.userDetails.car_details.model %></b> <br>
+                                          Year : <b><%= eachData.userDetails.car_details.year %></b> <br>
+                                          Plate Number : <b><%= eachData.userDetails.car_details.plateNo %></b> <br>
+                                          <% if(eachData.userDetails.comment == "Default" || eachData.userDetails.result == "Default") { %>
+                                          
+                                          <form action="/add/comment" method="post">
+                                          Add a comment : <input type="text" name="comment" id="comment"><br>
+                                          Result : 
+                                          <input type="radio" value="Pass" name="result" id="result"> Pass 
+                                          <input type="radio" value="Fail" name="result" id="result"> Fail <br><br>
+                                          <input type="hidden" value="<%= eachData.userDetails._id %>" name="userId" id="userId">
+                                          <button class="btn btn-primary text-uppercase p-2" id="submitButton" type="submit">Submit</button>  
+                                          </form>
+                                          <% } 
+                                          else
+                                          { %>
+                                          Comment : <b><%= eachData.userDetails.comment %></b> <br>
+                                          Result : <b><%= eachData.userDetails.result %></b> <br>
+                                          <% } %>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
+                            <% }); %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- Footer-->
+        <%- include('layouts/footer'); -%>
+        <!-- Bootstrap core JS-->
+        <%- include('layouts/script'); -%>
+    </body>
+</html>
