@@ -16,7 +16,7 @@
     }))
 
     const mongoose = require('mongoose');
-    const URI = "mongodb+srv://SmeetParmar:123@cluster0.dmfphfo.mongodb.net/";
+    const URI = ""; //add your database link
 
     mongoose.connect(URI, {useNewUrlParser:true});
 
